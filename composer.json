@@ -1,5 +1,5 @@
 {
-	"name": "gregrickaby/nextjs-headless-core-plugin",
+	"name": "gregrickaby/nextjs-wordpress-core-plugin",
 	"description": "A plugin to help turn WordPress into a headless CMS.",
 	"homepage": "https://github.com/gregrickaby/nextjs-wordpress-core-plugin",
 	"type": "wordpress-plugin",
