@@ -25,7 +25,7 @@ function set_headless_preview_link( string $link, WP_Post $post ) {
 	}
 
 	$base_url = HEADLESS_FRONTEND_URL;
-	$slug     = strlen( $post->post_name ) > 0 ? $post->post_name : sanitize_title( $post->post_title );
+	$slug     = strlen( $post->post_name ) > 0 ? $post->post_name : \sanitize_title( $post->post_title );
 
 	// Get GraphQL single name.
 	$post_type = \get_post_type_object( $post->post_type )->graphql_single_name ?? $post->post_type;
@@ -103,31 +103,18 @@ function set_headless_rest_preview_link( WP_REST_Response $response, WP_Post $po
 			return $response;
 		}
 
-		$base_url = HEADLESS_FRONTEND_URL;
+		$base_url  = HEADLESS_FRONTEND_URL;
+		$base_url  = rtrim( $base_url, '/' );
+		$permalink = \get_permalink( $post );
+		$site_url  = \get_site_url();
 
-		// Handle special-case pages.
-		$options    = \get_option( NEXTJS_WORDPRESS_PLUGIN_OPTION_NAME );
-		$error_page = is_array( $options ) ? $options['error_404_page'] : null;
-
-		// Remove excess slash from end of frontend domain.
-		$base_url = rtrim( $base_url, '/' );
-
-		if ( $error_page && $post->ID === $error_page ) {
-
-			// Return 404 URL for error page.
-			$response->data['link'] = "{$base_url}/404";
-		} else {
-			$permalink = \get_permalink( $post );
-			$site_url  = \get_site_url();
-
-			// Replace site URL if present.
-			if ( false !== stristr( $permalink, $site_url ) ) {
-				$permalink = str_ireplace( $site_url, $base_url, $permalink );
-			}
-
-			// Return URL based on post name.
-			$response->data['link'] = $permalink;
+		// Replace site URL if present.
+		if ( false !== stristr( $permalink, $site_url ) ) {
+			$permalink = str_ireplace( $site_url, $base_url, $permalink );
 		}
+
+		// Return URL based on post name.
+		$response->data['link'] = $permalink;
 	}
 
 	return $response;
