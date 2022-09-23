@@ -1,7 +1,7 @@
 {
-	"name": "gregrickaby/nextjs-wordpress-core-plugin",
+	"name": "gregrickaby/nextjs-wordpress-plugin",
 	"description": "A plugin to help turn WordPress into a headless CMS.",
-	"homepage": "https://github.com/gregrickaby/nextjs-wordpress-core-plugin",
+	"homepage": "https://github.com/gregrickaby/nextjs-wordpress-plugin",
 	"type": "wordpress-plugin",
 	"license": "MIT",
 	"authors": [
