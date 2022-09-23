@@ -3,7 +3,7 @@
  * Plugin Name: Next.js WordPress Plugin
  * Plugin URI:  https://github.com/gregrickaby/nextjs-wordpress-plugin
  * Description: A plugin to help turn WordPress into a headless CMS.
- * Version:     1.0.2
+ * Version:     1.0.3
  * Author:      Greg Rickaby <greg@gregrickaby.com>
  * Author URI:  https://gregrickaby.com
  * License:     MIT
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Define constants.
 define( 'NEXTJS_WORDPRESS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NEXTJS_WORDPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'NEXTJS_WORDPRESS_VERSION', '1.0.2' );
+define( 'NEXTJS_WORDPRESS_VERSION', '1.0.3' );
 
 // Require files.
 require_once 'inc/blocks.php';
