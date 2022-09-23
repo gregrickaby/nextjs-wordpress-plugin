@@ -4,10 +4,10 @@
  *
  * @author Greg Rickaby
  * @since 1.0.0
- * @package NEXTJS_HEADLESS_CORE
+ * @package NEXTJS_WORDPRESS_PLUGIN
  */
 
-namespace NEXTJS_HEADLESS_CORE;
+namespace NEXTJS_WORDPRESS_PLUGIN;
 
 use \WP_Post;
 use \WP_REST_Response;
@@ -106,7 +106,7 @@ function set_headless_rest_preview_link( WP_REST_Response $response, WP_Post $po
 		$base_url = HEADLESS_FRONTEND_URL;
 
 		// Handle special-case pages.
-		$options    = \get_option( NEXTJS_HEADLESS_CORE_OPTION_NAME );
+		$options    = \get_option( NEXTJS_WORDPRESS_PLUGIN_OPTION_NAME );
 		$error_page = is_array( $options ) ? $options['error_404_page'] : null;
 
 		// Remove excess slash from end of frontend domain.

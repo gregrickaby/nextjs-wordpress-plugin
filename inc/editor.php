@@ -4,10 +4,10 @@
  *
  * @author Greg Rickaby
  * @since 1.0.0
- * @package NEXTJS_HEADLESS_CORE
+ * @package NEXTJS_WORDPRESS_PLUGIN
  */
 
-namespace NEXTJS_HEADLESS_CORE;
+namespace NEXTJS_WORDPRESS_PLUGIN;
 
 /**
  * Customize settings for the page/post editor.

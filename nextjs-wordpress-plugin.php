@@ -8,10 +8,10 @@
  * Author URI:  https://gregrickaby.com
  * License:     MIT
  *
- * @package NEXTJS_HEADLESS_CORE
+ * @package NEXTJS_WORDPRESS_PLUGIN
  */
 
-namespace NEXTJS_HEADLESS_CORE;
+namespace NEXTJS_WORDPRESS_PLUGIN;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,9 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define constants.
-define( 'NEXTJS_HEADLESS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'NEXTJS_HEADLESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'NEXTJS_HEADLESS_VERSION', '1.0.2' );
+define( 'NEXTJS_WORDPRESS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'NEXTJS_WORDPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'NEXTJS_WORDPRESS_VERSION', '1.0.2' );
 
 // Require files.
 require_once 'inc/blocks.php';
