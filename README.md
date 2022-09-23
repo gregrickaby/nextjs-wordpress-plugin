@@ -1,4 +1,4 @@
-# Next.js WordPress Core Plugin
+# Next.js WordPress Plugin
 
 A plugin to help turn WordPress into a headless CMS. This plugin is a companion to the [Next.js WordPress Repo](https://github.com/gregrickaby/nextjs-wordpress).
 
