@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Next.js WordPress Core Plugin
- * Plugin URI:  https://github.com/gregrickaby/nextjs-wordpress-core-plugin
+ * Plugin Name: Next.js WordPress Plugin
+ * Plugin URI:  https://github.com/gregrickaby/nextjs-wordpress-plugin
  * Description: A plugin to help turn WordPress into a headless CMS.
- * Version:     1.0.0
+ * Version:     1.0.2
  * Author:      Greg Rickaby <greg@gregrickaby.com>
  * Author URI:  https://gregrickaby.com
  * License:     MIT
@@ -19,10 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define constants.
-define( 'NEXTJS_HEADLESS_CORE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'NEXTJS_HEADLESS_CORE_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'NEXTJS_HEADLESS_CORE_VERSION', '1.0.0' );
-define( 'NEXTJS_HEADLESS_CORE_OPTION_NAME', 'headless_config' );
+define( 'NEXTJS_HEADLESS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'NEXTJS_HEADLESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'NEXTJS_HEADLESS_VERSION', '1.0.2' );
 
 // Require files.
 require_once 'inc/blocks.php';
