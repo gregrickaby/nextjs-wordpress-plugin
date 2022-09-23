@@ -5,5 +5,5 @@ A plugin to help turn WordPress into a headless CMS. This plugin is a companion 
 ## Installation
 
 ```bash
-composer require gregrickaby/nextjs-wordpress-core-plugin
+composer require gregrickaby/nextjs-wordpress-plugin
 ```
