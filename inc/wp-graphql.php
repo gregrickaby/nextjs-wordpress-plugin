@@ -13,13 +13,13 @@ namespace NEXTJS_WORDPRESS_PLUGIN;
 /**
  * Register Gravatar URL with GraphQL.
  */
-function register_gravatar_url() {
-	\register_graphql_field(
+function register_gravatar_url(): void {
+	register_graphql_field(
 		'Commenter',
 		'gravatarUrl',
 		[
 			'type'        => 'String',
-			'description' => \esc_html__( 'Adds a Gravatar URL to the Comment Author', 'grd-headless-core' ),
+			'description' => esc_html__( 'Adds a Gravatar URL to the Comment Author', 'grd-headless-core' ),
 			'resolve'     => function( $comment_author, $args, $context, $info ) {
 				$object = null;
 
@@ -30,14 +30,14 @@ function register_gravatar_url() {
 					$user_id = $comment_author->__get( 'userId' );
 
 					// Fetch the user.
-					$object = \get_user_by( 'ID', $user_id );
+					$object = get_user_by( 'ID', $user_id );
 				} else { // Guest commenter.
 
 					// Get the comment ID.
 					$comment_id = $comment_author->__get( 'databaseId' );
 
 					// Fetch the comment.
-					$object = \get_comment( $comment_id );
+					$object = get_comment( $comment_id );
 				}
 
 				// Set avatar args.
@@ -46,7 +46,7 @@ function register_gravatar_url() {
 				];
 
 				// Fetch the gravatar url.
-				$gravatar_url = \get_avatar_url( $object, $args );
+				$gravatar_url = get_avatar_url( $object, $args );
 
 				// In case something goes wrong, fallback to the mystery person avatar.
 				if ( false === $gravatar_url ) {

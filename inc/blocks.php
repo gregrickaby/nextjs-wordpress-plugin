@@ -12,16 +12,16 @@ namespace NEXTJS_WORDPRESS_PLUGIN;
 /**
  * Create the rest field.
  */
-function create_field() {
+function create_field(): void {
 
-	$rest_post_types = array_values( \get_post_types( [ 'show_in_rest' => true ] ) );
+	$rest_post_types = array_values( get_post_types( [ 'show_in_rest' => true ] ) );
 
 	/**
 	 * Registers a new rest field.
 	 *
 	 * @see https://developer.wordpress.org/reference/functions/register_rest_field/
 	 */
-	\register_rest_field(
+	register_rest_field(
 		$rest_post_types,
 		'gutenberg_blocks',
 		[
@@ -53,11 +53,11 @@ function get_blocks( $post, $attr, $request ): array {
 		return $rtn;
 	}
 
-	$post_obj = \get_post( absint( $post['id'] ) );
+	$post_obj = get_post( absint( $post['id'] ) );
 
-	if ( \is_wp_error( $post_obj ) ) {
+	if ( is_wp_error( $post_obj ) ) {
 		return $rtn;
 	}
 
-	return \parse_blocks( $post_obj->post_content ) ?? $rtn;
+	return parse_blocks( $post_obj->post_content ) ?? $rtn;
 }

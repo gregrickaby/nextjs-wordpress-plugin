@@ -18,13 +18,13 @@ namespace NEXTJS_WORDPRESS_PLUGIN;
  * @param string $canonical The current page's generated canonical URL.
  * @return string The filtered canonical URL.
  */
-function filter_canonical( $canonical ) {
-	if ( ! defined( 'HEADLESS_FRONTEND_URL' ) ) {
+function filter_canonical( $canonical ): string {
+	if ( ! defined( 'NEXTJS_FRONTEND_URL' ) ) {
 		return $canonical;
 	}
 
 	// Replace WordPress URL with front-end URL.
-	return str_replace( \trailingslashit( \get_home_url() ), \trailingslashit( HEADLESS_FRONTEND_URL ), $canonical );
+	return str_replace( trailingslashit( get_home_url() ), NEXTJS_FRONTEND_URL, $canonical );
 }
 add_filter( 'wpseo_canonical', __NAMESPACE__ . '\filter_canonical' );
 add_filter( 'wpseo_opengraph_url', __NAMESPACE__ . '\filter_canonical' );
