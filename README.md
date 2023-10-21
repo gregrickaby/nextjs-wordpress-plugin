@@ -27,3 +27,20 @@ wp plugin install https://github.com/gregrickaby/nextjs-wordpress-plugin/archive
 Once installed, you'll need to activate the plugin.
 
 ---
+
+## Configuration
+
+You'll need to add a few constants to your `wp-config.php` file.
+
+```php
+// The URL of your Next.js frontend. Include the trailing slash.
+define( 'NEXTJS_FRONTEND_URL', 'https://nextjswp.com/' );
+
+// Any random string. This must match the .env variable in the Next.js frontend.
+define( 'NEXTJS_PREVIEW_SECRET', 'preview' );
+
+// Any random string. This must match the .env variable in the Next.js frontend.
+define( 'NEXTJS_REVALIDATION_SECRET', 'revalidate' );
+```
+
+---
