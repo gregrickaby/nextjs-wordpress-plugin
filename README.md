@@ -15,7 +15,7 @@ Download the [latest release](https://github.com/gregrickaby/nextjs-wordpress-pl
 ### Composer
 
 ```bash
-composer require gregrickaby/nextjs-wordpress-plugin
+composer require gregrickaby/nextjs-wordpress-plugin:dev-main
 ```
 
 ### WP CLI
