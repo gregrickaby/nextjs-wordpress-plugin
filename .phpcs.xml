@@ -1,18 +1,20 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress Coding Standards">
-	<description>Apply WordPress Coding Standards</description>
+<ruleset name="Custom Coding Standards" namespace="GRD\Standard">
+	<description>A custom coding standard by Greg Rickaby.</description>
 
-	<!-- Set the memory limit to 256M.
-		 For most standard PHP configurations, this means the memory limit will temporarily be raised.
-		 Ref: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#specifying-phpini-settings
-	-->
-	<ini name="memory_limit" value="256M"/>
+	<!-- Set PHP version. -->
+	<config name="testVersion" value="8.2-"/>
 
-	<!-- Whenever possible, cache the scan results and re-use those for unchanged files on the next scan. -->
-	<arg name="cache"/>
+	<!-- Only sniff the plugin and its subdirectories. -->
+	<file>./</file>
 
-	<!-- Strip the filepaths down to the relevant bit. -->
-	<arg name="basepath" value="./"/>
+	<!-- Don't sniff the following directories or file types. -->
+	<exclude-pattern>/build/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+
+	<!-- Only sniff PHP files. -->
+	<arg name="extensions" value="php"/>
 
 	<!-- Check up to 20 files simultaneously. -->
 	<arg name="parallel" value="20"/>
@@ -20,29 +22,30 @@
 	<!-- Show sniff codes in all reports. -->
 	<arg value="ps"/>
 
-	<!-- Use WordPress "Extra" Coding Standards. -->
+	<!-- Display colors. -->
+	<arg name="colors"/>
+
+	<!-- Enable cache for subsequent runs. -->
+	<arg name="cache"/>
+
+	<!-- Use WordPress coding standard. -->
+	<rule ref="WordPress" />
+
+	<!-- Use WordPress "Extra" coding standard. -->
 	<rule ref="WordPress-Extra">
-		<!-- Allow array short syntax. -->
-		<exclude name="Generic.Arrays.DisallowShortArraySyntax" />
-		<!-- Allow short prefixes. -->
-		<exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed"/>
+		<!-- Allow short array syntax. -->
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+		<!-- Ignore invalid class file name. -->
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<!-- Ignore invalid file name. -->
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+		<!-- Allow short ternary syntax. -->
+		<exclude name="Universal.Operators.DisallowShortTernary.Found"/>
 	</rule>
 
-	<!-- Use WordPress "Docs" Coding Standards. -->
+	<!-- Use WordPress "Docs" coding standard. -->
 	<rule ref="WordPress-Docs" />
 
 	<!-- Use WordPress PHP Compatibility. -->
-	<rule ref="PHPCompatibilityWP"/>
-
-	<!-- WordPress Core currently supports PHP 8.0+. -->
-	<config name="testVersion" value="8.0"/>
-
-	<!-- Only sniff PHP files. -->
-	<arg name="extensions" value="php"/>
-
-	<!-- Sniff the entire plugin. -->
-	<file>.</file>
-
-	<!-- Don't sniff the following directories. -->
-	<exclude-pattern>/vendor/*</exclude-pattern>
+	<rule ref="PHPCompatibilityWP" />
 </ruleset>
