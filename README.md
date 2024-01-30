@@ -69,6 +69,30 @@ switch ( $post_type ) {
 
 ---
 
+### Preview Link
+
+To change the preview links, edit `src/classes/Links.php`.
+
+```php
+// src/classes/Links.php
+
+ public function set_headless_preview_link( string $link, WP_Post $post ): string {
+
+  // Return the original link if the frontend URL or preview secret are not defined.
+  if ( ! $this->frontend_url || ! $this->preview_secret ) {
+   return $link;
+  }
+
+  // Update the preview link to point to the front-end.
+  return add_query_arg(
+   [ 'secret' => $this->preview_secret ],
+   esc_url_raw( "{$this->frontend_url}/preview/{$post->ID}" ) // <-- edit this to match your front-end routing!
+  );
+ }
+```
+
+---
+
 ## Support
 
 If you find something wrong, please [open an issue](https://github.com/gregrickaby/nextjs-wordpress-plugin/issues/new). I will do my best to respond in a timely manner.
