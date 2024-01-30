@@ -10,9 +10,16 @@
 			"email": "greg@gregrickaby.com"
 		}
 	],
+	"autoload": {
+		"psr-4": {
+			"NextJS_WordPress_Plugin\\": "src/classes"
+		}
+	},
 	"config": {
+		"optimize-autoloader": true,
+		"process-timeout": 600,
 		"platform": {
-			"php": "8.1"
+			"php": "8.2"
 		},
 		"allow-plugins": {
 			"composer/installers": true,
@@ -22,10 +29,10 @@
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"wp-coding-standards/wpcs": "^2.3"
+		"wp-coding-standards/wpcs": "^3.0"
 	},
 	"scripts": {
-		"format": "./vendor/bin/phpcbf --standard=.phpcs.xml --report=summary,source",
-		"lint": "./vendor/bin/phpcs --standard=.phpcs.xml --report=summary,source"
+		"format": "./vendor/bin/phpcbf --standard=.phpcs.xml",
+		"lint": "./vendor/bin/phpcs --standard=.phpcs.xml"
 	}
 }
