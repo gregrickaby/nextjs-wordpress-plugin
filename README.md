@@ -1,46 +1,82 @@
 # Next.js WordPress Plugin
 
-A plugin to help turn WordPress into a headless CMS. This plugin is a companion to the [Next.js WordPress Theme](https://github.com/gregrickaby/nextjs-wordpress-theme) and is intended to be used within the [Next.js WordPress project](https://github.com/gregrickaby/nextjs-wordpress).
+A plugin to help configure WordPress for use as a headless CMS.
+
+This plugin is a companion to the [Next.js WordPress Theme](https://github.com/gregrickaby/nextjs-wordpress-theme) and is intended to be used within the [Next.js WordPress project](https://github.com/gregrickaby/nextjs-wordpress).
 
 ---
 
 ## Download
 
-There are a few ways to aquire this plugin.
+There are a few ways to aquire this plugin:
 
-### The Old Fashioned Way
+### 1) Composer
 
-Download the [latest release](https://github.com/gregrickaby/nextjs-wordpress-plugin/archive/refs/heads/main.zip) (.zip) and upload it like any other WordPress plugin.
-
-### Composer
+This is the preferred method of installation.
 
 ```bash
-composer require gregrickaby/nextjs-wordpress-plugin:dev-main
+composer require gregrickaby/nextjs-wordpress-plugin
 ```
 
-### WP CLI
+### 2) WP CLI
 
 ```bash
 wp plugin install https://github.com/gregrickaby/nextjs-wordpress-plugin/archive/refs/heads/main.zip --activate
 ```
 
-Once installed, you'll need to activate the plugin.
+### 3) Download
+
+Download the [latest release](https://github.com/gregrickaby/nextjs-wordpress-plugin/archive/refs/heads/main.zip) (.zip) and upload it like any other WordPress plugin.
+
+---
+
+### Activate
+
+Once installed, activate the plugin.
 
 ---
 
 ## Configuration
 
-You'll need to add a few constants to your `wp-config.php` file.
+There's no configuration necessary. For additional project configuration, please see [the instructions](https://github.com/gregrickaby/nextjs-wordpress?tab=readme-ov-file#6-configure-wordpress) in the [Next.js WordPress](https://github.com/gregrickaby/nextjs-wordpress) repository.
+
+---
+
+## Revalidation
+
+If your Custom Post Types and front-end routes differ from this plugin, you'll need to edit `src/classes/Revalidation.php` to match your project.
+
+> ⚠️ Editing a plugin directly means you'll need to re-apply your changes after a plugin update occurs. If you do need to customize, consider forking this plugin and making your changes there.
 
 ```php
-// The URL of your Next.js frontend. Include the trailing slash.
-define( 'NEXTJS_FRONTEND_URL', 'https://nextjswp.com/' );
+// src/classes/Revalidation.php
 
-// Any random string. This must match the .env variable in the Next.js frontend.
-define( 'NEXTJS_PREVIEW_SECRET', 'preview' );
-
-// Any random string. This must match the .env variable in the Next.js frontend.
-define( 'NEXTJS_REVALIDATION_SECRET', 'revalidate' );
+/**
+ * Configure the $slug based on your post types and front-end routing.
+ */
+switch ( $post_type ) {
+ case 'post': // post type
+  $slug = "/blog/{$post_name}"; // front-end route
+  break;
+ case 'book': // book post type
+  $slug = "/books/{$post_name}"; // front-end route
+  break;
+ default:
+  $slug = $post_name;
+  break;
+}
 ```
+
+---
+
+## Support
+
+If you find something wrong, please [open an issue](https://github.com/gregrickaby/nextjs-wordpress-plugin/issues/new). I will do my best to respond in a timely manner.
+
+---
+
+## License
+
+This plugin is licensed under the [MIT License](LICENSE).
 
 ---
