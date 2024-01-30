@@ -78,7 +78,7 @@ class Links {
 			return $link;
 		}
 
-		// Return the original link if the post is not published.
+		// Update the preview link to point to the front-end.
 		return add_query_arg(
 			[ 'secret' => $this->preview_secret ],
 			esc_url_raw( "{$this->frontend_url}/preview/{$post->ID}" )
